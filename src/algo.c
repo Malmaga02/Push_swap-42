@@ -1,144 +1,61 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 18:03:34 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/09 15:46:46 by chsassi          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_move(t_dll *pStack)
+void    final_sorting(t_dll **stack_a)
 {
-	int		head_value;
-	int		middle_value;
-	int		last_value;
-	int		min_value;
-	int		max_value;
+    int min_index;
+    int diff_min;
+    int size;
 
-	head_value = pStack->value;
-	middle_value = pStack->next->value;
-	last_value = pStack->next->next->value;
-	min_value = find_min_value(pStack);
-	max_value = find_max_value(pStack);
-	if ((middle_value == max_value && head_value == min_value)
-		|| (middle_value == min_value && last_value == max_value)
-		|| (middle_value != min_value && middle_value != max_value))
-		return (SWAP);
-	if (middle_value == min_value && head_value == max_value)
-		return (ROTATE);
-	else if (middle_value == max_value && last_value == min_value)
-		return (R_ROTATE);
-	return (STAY);
+    min_index = find_min_index(*stack_a);
+    size = dll_size(*stack_a);
+    if (min_index > (size - 1) / 2)
+    {
+        diff_min = size - min_index;
+        while (diff_min > 0)
+        {
+            r_rotate(stack_a, NULL, MOVE_A);
+            diff_min--;
+        }
+        return ;
+    }
+    if (min_index <= (size - 1) / 2)
+    {
+        while (min_index > 0)
+        {
+            rotate(stack_a, NULL, MOVE_A);
+            min_index--;
+        }
+        return ;
+    }
 }
 
-t_dll	**solve_3(t_dll **pStack)
+void    do_moves(t_dll **stack_a, t_dll **stack_b)
 {
-	if (!pStack || !(*pStack))
-		return (NULL);
-	if (is_sorted(*pStack))
-		return (pStack);
-	if (find_move(*pStack) == SWAP)
-		pStack = swap(pStack, NULL, MOVE_A);
-	if (find_move(*pStack) == ROTATE)
-		pStack = rotate(pStack, NULL, MOVE_A);
-	else if (find_move(*pStack) == R_ROTATE)
-		pStack = r_rotate(pStack, NULL, MOVE_A);
-	return (pStack);
+    t_bestmoves moves;
+
+    moves = get_best_moves(*stack_a, *stack_b);
+    if (moves.rot_a || moves.rot_b || moves.rot_both)
+        get_rotate(stack_a, stack_b, moves);
+    if (moves.r_rot_a || moves.r_rot_b || moves.r_rot_both)
+        get_r_rotate(stack_a, stack_b, moves);
 }
 
-/* t_dll	**solve_3(t_dll **pStack)
+void    solve_all(t_dll **stack_a, t_dll **stack_b)
 {
-	int		head_value;
-	int		middle_value;
-	int		last_value;
+    int size_all;
+    int size_a;
+    int size_b;
 
-	head_value = (*pStack)->value;
-	middle_value = (*pStack)->next->value;
-	last_value = (*pStack)->next->next->value;
-	if (is_sorted(*pStack))
-		return (pStack);
-	if (head_value > middle_value)
-	{
-		if (middle_value > last_value)
-		{
-			pStack = rotate(pStack, NULL, MOVE_A);
-			pStack = swap(pStack, NULL, MOVE_A);
-		}
-		else
-			pStack = rotate(pStack, NULL, MOVE_A);
-	}
-	else if (head_value < middle_value)
-	{
-		if (head_value < last_value)
-		{
-			pStack = swap(pStack, NULL, MOVE_A);
-			pStack = rotate(pStack, NULL, MOVE_A);
-		}
-		else
-			pStack = r_rotate(pStack, NULL, MOVE_A);
-	}
-	return (pStack);
-} */
-
-t_dll	**solve_4(t_dll **pStack, t_dll **stack_b)
-{
-	int		i;
-
-	i = find_min_index(*pStack);
-	if (i > 1)
-	{
-		i = 4 - i;
-		while (i > 0)
-		{
-			pStack = r_rotate(pStack, NULL, MOVE_A);
-			i--;
-		}
-	}
-	else
-	{
-		while (i < 1)
-		{
-			pStack = rotate(pStack, NULL, MOVE_A);
-			i++;
-		}
-	}
-	if (is_sorted(*pStack))
-		return (pStack);
-	pb(stack_b, pStack);
-	pStack = solve_3(pStack);
-	pa(pStack, stack_b);
-	return (pStack);
-}
-
-t_dll	**solve_5(t_dll **pStack, t_dll **stack_b)
-{
-	int		i;
-
-	i = find_min_index(*pStack);
-	if (i > 2)
-	{
-		i = 5 - i;
-		while (i > 0)
-		{
-			pStack = r_rotate(pStack, NULL, MOVE_A);
-			i--;
-		}
-	}
-	else
-	{
-		while (i < 2)
-		{
-			pStack = rotate(pStack, NULL, MOVE_A);
-			i++;
-		}
-	}
-	pb(stack_b, pStack);
-	pStack = solve_4(pStack, stack_b);
-	pa(pStack, stack_b);
-	return (pStack);
+    size_all = dll_size(*stack_a) + dll_size(*stack_b);
+    size_b = dll_size(*stack_b);
+    size_a = 0;
+    while (stack_b && size_all != size_a)
+    {
+        do_moves(stack_a, stack_b);
+        pa(stack_a, stack_b);
+        size_a = dll_size(*stack_a);
+    }
+    if (!is_sorted(*stack_a))
+        final_sorting(stack_a);
 }

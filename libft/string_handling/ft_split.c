@@ -75,7 +75,6 @@ static char	**ft_copia(char **fin, const char *s, char c)
 		}
 	}
 	fin[x] = NULL;
-	free((char *)s);
 	return (fin);
 }
 

@@ -29,6 +29,7 @@ void	dll_add_front(t_dll **lst, t_dll *new)
 	}
 	new->next = head;
 	new->prev = NULL;
+	head->prev = new;
 	new->index = 0;
 	*lst = new;
 	set_index(lst);

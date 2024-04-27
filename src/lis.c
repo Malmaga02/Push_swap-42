@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//n deve essere uno
+
 int	*lis_algo(t_dll *head, int *n)
 {
 	t_dll	*tmp;
@@ -68,7 +68,7 @@ t_dll   *handling_lis(t_dll **stack_a, int *index_a, int lis_size)
 	return (stack_b);
 }
 
-t_dll    *solve_all(t_dll **stack_a)
+t_dll    *get_stack_lis(t_dll **stack_a)
 {
 	t_dll   *stack_b;
 	int     *index_a;

@@ -107,3 +107,41 @@ t_bestmoves	bestmoves_operations(t_bestmoves moves, int flag_move)
 			+ moves.r_rot_a + moves.r_rot_b + moves.r_rot_both;
 	return (moves);
 }
+
+void    get_rotate(t_dll **stack_a, t_dll **stack_b, t_bestmoves moves)
+{
+    while (moves.rot_a > 0)
+    {
+        rotate(stack_a, stack_b, MOVE_A);
+        moves.rot_a--;
+    }
+    while (moves.rot_b > 0)
+    {
+        rotate(stack_a, stack_b, MOVE_B);
+        moves.rot_b--;
+    }
+    while (moves.rot_both > 0)
+    {
+        rotate(stack_a, stack_b, MOVE_BOTH);
+        moves.rot_both--;
+    }
+}
+
+void    get_r_rotate(t_dll **stack_a, t_dll **stack_b, t_bestmoves moves)
+{
+    while (moves.r_rot_a > 0)
+    {
+        r_rotate(stack_a, stack_b, MOVE_A);
+        moves.r_rot_a--;
+    }
+    while (moves.r_rot_b > 0)
+    {
+        r_rotate(stack_a, stack_b, MOVE_B);
+        moves.r_rot_b--;
+    }
+    while (moves.r_rot_both > 0)
+    {
+        r_rotate(stack_a, stack_b, MOVE_BOTH);
+        moves.r_rot_both--;
+    }
+}
