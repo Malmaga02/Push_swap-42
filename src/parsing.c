@@ -70,7 +70,8 @@ t_dll	*parse_input_args(int ac, char **av)
 	}
 	head = get_list_head(mtx);
 	if (!head)
-		return (dll_clear(&head), free_mtx(mtx, count_rows(mtx)), ft_printf("Error\n"), NULL);
+		return (dll_clear(&head), free_mtx(mtx, count_rows(mtx)), \
+		ft_printf("Error\n"), NULL);
 	return (head);
 }
 

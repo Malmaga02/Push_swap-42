@@ -21,12 +21,11 @@ void	r_rotate_op(t_dll **stack)
 	head = *stack;
 	last = dll_last(head);
 	bef_last = last->prev;
-
 	last->next = head;
 	last->prev = NULL;
 	head->prev = last;
 	bef_last->next = NULL;
-	*stack = last; 
+	*stack = last;
 	set_index(stack);
 }
 
@@ -46,6 +45,6 @@ void	r_rotate(t_dll **stack_a, t_dll **stack_b, int flag)
 	{
 		r_rotate_op(stack_a);
 		r_rotate_op(stack_b);
- 		write(1, "rrr\n", 4);
+		write(1, "rrr\n", 4);
 	}
 }

@@ -24,7 +24,7 @@ t_bestmoves	check_moves_b(t_dll *stack_b, int value_b, t_bestmoves moves)
 		if (stack_b->value == value_b)
 		{
 			index = stack_b->index;
-			break;
+			break ;
 		}
 		stack_b = stack_b->next;
 	}
@@ -58,7 +58,7 @@ t_bestmoves	check_moves_a(t_dll *stack_a, int value_b, t_bestmoves moves)
 	if (index > (size - 1) / 2)
 		moves.r_rot_a = size - index;
 	else
-		moves.rot_a = index; 
+		moves.rot_a = index;
 	return (moves);
 }
 
@@ -87,6 +87,7 @@ t_bestmoves	organize_moves(t_bestmoves moves)
 	moves = bestmoves_operations(moves, STAY);
 	return (moves);
 }
+
 t_bestmoves	get_moves(t_dll *stack_a, t_dll *stack_b, int value_b)
 {
 	t_bestmoves	moves;

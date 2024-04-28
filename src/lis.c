@@ -15,8 +15,8 @@
 int	*lis_algo(t_dll *head, int *n)
 {
 	t_dll	*tmp;
-	int     *lis_array;
-	int     size;
+	int		*lis_array;
+	int		size;
 	int		max;
 
 	if (!head)
@@ -41,12 +41,12 @@ int	*lis_algo(t_dll *head, int *n)
 	return (lis_array);
 }
 
-t_dll   *handling_lis(t_dll **stack_a, int *index_a, int lis_size)
+t_dll	*handling_lis(t_dll **stack_a, int *index_a, int lis_size)
 {
-	int index;
-	int size_a;
-	int	i;
-	t_dll   *stack_b;
+	int		index;
+	int		size_a;
+	int		i;
+	t_dll	*stack_b;
 
 	i = 0;
 	index = 0;
@@ -68,21 +68,16 @@ t_dll   *handling_lis(t_dll **stack_a, int *index_a, int lis_size)
 	return (stack_b);
 }
 
-t_dll    *get_stack_lis(t_dll **stack_a)
+t_dll	*get_stack_lis(t_dll **stack_a)
 {
-	t_dll   *stack_b;
-	int     *index_a;
-	int     lis_size;
+	t_dll	*stack_b;
+	int		*index_a;
+	int		lis_size;
 	int		i;
 
 	lis_size = 1;
 	i = 0;
 	index_a = lis_algo(*stack_a, &lis_size);
-	// while (i < lis_size)
-	// {
-	// 	ft_printf("%d\n", index_a[i]);
-	// 	i++;
-	// }
 	stack_b = handling_lis(stack_a, index_a, lis_size);
 	return (stack_b);
 }
