@@ -44,8 +44,10 @@ t_bestmoves	check_moves_a(t_dll *stack_a, int value_b, t_bestmoves moves)
 	index = 0;
 	diff = INT_MAX;
 	size = dll_size(stack_a);
-	if (find_min_value(stack_a) > value_b || find_max_value(stack_a) < value_b)
-		return (moves);
+	if (find_min_value(stack_a) > value_b)
+		index = find_min_index(stack_a);
+	if (find_max_value(stack_a) < value_b)
+		index = find_max_index(stack_a);
 	while (stack_a)
 	{
 		if (stack_a->value > value_b && diff > stack_a->value - value_b)
