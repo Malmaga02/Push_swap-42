@@ -145,3 +145,20 @@ void    get_r_rotate(t_dll **stack_a, t_dll **stack_b, t_bestmoves moves)
         moves.r_rot_both--;
     }
 }
+void	solver(t_dll **stack_a)
+{
+	t_dll	*stack_b;
+	int		len;
+
+	stack_b = NULL;
+	len = dll_size(*stack_a);
+	if (len <= 5)
+	{
+		minisort(stack_a, &stack_b);
+		return ;
+	}
+	stack_b = get_stack_lis(stack_a);
+	if (!stack_b)
+		return ;
+	solve_all(stack_a, &stack_b);
+}

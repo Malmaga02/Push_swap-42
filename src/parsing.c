@@ -73,3 +73,19 @@ t_dll	*parse_input_args(int ac, char **av)
 		return (dll_clear(&head), free_mtx(mtx, count_rows(mtx)), ft_printf("Error\n"), NULL);
 	return (head);
 }
+
+t_dll	*parse_input(int ac, char **av)
+{
+	t_dll	*stack_a;
+
+	stack_a = (t_dll *){0};
+	if (ac == 1 || !av[1] || !av[1][0])
+		return (0);
+	if (ac == 2)
+		stack_a = parse_input_string(ac, av[1]);
+	else if (ac > 2)
+		stack_a = parse_input_args(ac, &av[1]);
+	if ((stack_a && is_sorted(stack_a)) || !stack_a)
+		return (0);
+	return (stack_a);
+}

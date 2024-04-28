@@ -15,7 +15,7 @@ COLOUR_BLUE = \033[0;34m
 COLOUR_GREEN = \033[0;32m
 
 SRC =  ./src/algo.c \
-		./src/mini_sort.c \
+		./src/minisort.c \
 		./src/find_bestmoves.c \
 		./src/lis.c \
 		./src/parsing.c \

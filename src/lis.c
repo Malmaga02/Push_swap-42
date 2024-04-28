@@ -78,11 +78,11 @@ t_dll    *get_stack_lis(t_dll **stack_a)
 	lis_size = 1;
 	i = 0;
 	index_a = lis_algo(*stack_a, &lis_size);
-	while (i < lis_size)
-	{
-		ft_printf("%d\n", index_a[i]);
-		i++;
-	}
+	// while (i < lis_size)
+	// {
+	// 	ft_printf("%d\n", index_a[i]);
+	// 	i++;
+	// }
 	stack_b = handling_lis(stack_a, index_a, lis_size);
 	return (stack_b);
 }

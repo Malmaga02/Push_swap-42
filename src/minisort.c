@@ -36,76 +36,87 @@ int	find_move(t_dll *pStack)
 	return (STAY);
 }
 
-t_dll	**solve_3(t_dll **pStack)
+void	solve_3(t_dll **pStack)
 {
 	if (!pStack || !(*pStack))
-		return (NULL);
+		return ;
 	if (is_sorted(*pStack))
-		return (pStack);
+		return ;
 	if (find_move(*pStack) == SWAP)
 		swap(pStack, NULL, MOVE_A);
 	if (find_move(*pStack) == ROTATE)
 		rotate(pStack, NULL, MOVE_A);
 	else if (find_move(*pStack) == R_ROTATE)
 		r_rotate(pStack, NULL, MOVE_A);
-	return (pStack);
 }
 
-/* t_dll	**solve_4(t_dll **pStack, t_dll **stack_b)
+void	solve_4(t_dll **pStack, t_dll **stack_b)
 {
 	int		i;
 
 	i = find_min_index(*pStack);
-	if (i > 1)
+	if (i >= 1)
 	{
 		i = 4 - i;
 		while (i > 0)
 		{
-			pStack = r_rotate(pStack, NULL, MOVE_A);
+			r_rotate(pStack, NULL, MOVE_A);
 			i--;
 		}
 	}
-	else
+	else if (i > 0)
 	{
 		while (i < 1)
 		{
-			pStack = rotate(pStack, NULL, MOVE_A);
+			rotate(pStack, NULL, MOVE_A);
 			i++;
 		}
 	}
 	if (is_sorted(*pStack))
-		return (pStack);
+		return ;
 	pb(stack_b, pStack);
-	pStack = solve_3(pStack);
+	solve_3(pStack);
 	pa(pStack, stack_b);
-	return (pStack);
 }
 
-t_dll	**solve_5(t_dll **pStack, t_dll **stack_b)
+void	solve_5(t_dll **pStack, t_dll **stack_b)
 {
 	int		i;
 
 	i = find_min_index(*pStack);
-	if (i > 2)
+	if (i >= 2)
 	{
 		i = 5 - i;
 		while (i > 0)
 		{
-			pStack = r_rotate(pStack, NULL, MOVE_A);
+			r_rotate(pStack, NULL, MOVE_A);
 			i--;
 		}
 	}
-	else
+	else if (i > 0)
 	{
 		while (i < 2)
 		{
-			pStack = rotate(pStack, NULL, MOVE_A);
+			rotate(pStack, NULL, MOVE_A);
 			i++;
 		}
 	}
 	pb(stack_b, pStack);
-	pStack = solve_4(pStack, stack_b);
+	solve_4(pStack, stack_b);
 	pa(pStack, stack_b);
-	return (pStack);
 }
- */
+
+void	minisort(t_dll **stack_a, t_dll **stack_b)
+{
+	int		len;
+
+	len = dll_size(*stack_a);
+	if (len == 2 && (*stack_a)->value > (*stack_a)->next->value)
+		swap(stack_a, NULL, MOVE_A);
+	else if (len == 3)
+		solve_3(stack_a);
+	else if (len == 4)
+		solve_4(stack_a, stack_b);
+	else if (len == 5)
+		solve_5(stack_a, stack_b);
+}

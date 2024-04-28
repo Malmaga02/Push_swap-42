@@ -14,27 +14,10 @@
 
 int	main(int ac, char **av)
 {
-	t_dll	*list;
-	t_dll	*stack_b;
-	t_dll	*tmp_b;
+	t_dll	*stack_a;
 
-	list = NULL;
-	stack_b = (t_dll *){0};
-	if (ac == 1 || !av[1] || !av[1][0])
-		return (0);
-	if (ac == 2)
-		list = parse_input_string(ac, av[1]);
-	else if (ac > 2)
-		list = parse_input_args(ac, &av[1]);
-	if ((list && is_sorted(list)) || !list)
-		return (0);
-	stack_b = get_stack_lis(&list);
-	if (!stack_b)
-		return (0);
-	tmp_b = stack_b;
-	solve_all(&list, &stack_b);
- 	dll_clear(&list);
+	stack_a = parse_input(ac, av);
+	solver(&stack_a);
+	dll_clear(&stack_a);
 	return (0);
 }
-
-
