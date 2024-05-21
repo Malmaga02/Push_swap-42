@@ -38,6 +38,7 @@ SRC = ./allocating_strings/ft_calloc.c \
 		./char_check/ft_tolower.c \
 		./char_check/ft_toupper.c \
 		./conversions/ft_atoi.c \
+		./conversions/ft_atol.c \
 		./conversions/ft_itoa.c \
 		./ft_printf/ft_printf.c \
 		./ft_printf/ft_format.c \

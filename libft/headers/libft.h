@@ -6,7 +6,7 @@
 /*   By: mgalmari <mgalmari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:14:08 by mgalmari          #+#    #+#             */
-/*   Updated: 2024/03/02 15:45:13 by mgalmari         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:09:06 by mgalmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		ft_toupper(int c);
 
 // conversions
 int		ft_atoi(const char	*nptr);
+long	ft_atol(const char *str);
 char	*ft_itoa(int n);
 
 // ft_printf

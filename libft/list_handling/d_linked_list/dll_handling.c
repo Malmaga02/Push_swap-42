@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finders.c                                          :+:      :+:    :+:   */
+/*   dll_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:20:45 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/26 13:50:34 by mgalmari         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:31:29 by mgalmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	find_min_index(t_dll *pStack)
 {
+	int		i;
 	t_dll	*tmp;
 	t_dll	*tmp2;
-	int		i;
 
+	i = 0;
 	tmp = pStack;
 	tmp2 = pStack->next;
 	while (tmp2)
@@ -52,10 +53,11 @@ int	find_min_value(t_dll *pStack)
 
 int	find_max_index(t_dll *pStack)
 {
+	int		i;
 	t_dll	*tmp;
 	t_dll	*tmp2;
-	int		i;
 
+	i = 0;
 	tmp = pStack;
 	tmp2 = pStack->next;
 	while (tmp2)
@@ -76,8 +78,8 @@ int	find_max_value(t_dll *pStack)
 	int		max;
 	t_dll	*ptr;
 
-	max = INT_MIN;
 	i = 0;
+	max = INT_MIN;
 	ptr = pStack;
 	while (ptr)
 	{

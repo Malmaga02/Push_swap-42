@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r-rotate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgalmari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 20:46:10 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/02 20:46:13 by chsassi          ###   ########.fr       */
+/*   Created: 2024/04/02 20:46:10 by mgalmari          #+#    #+#             */
+/*   Updated: 2024/05/09 11:56:43 by mgalmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	r_rotate_op(t_dll **stack)
 	t_dll	*last;
 	t_dll	*bef_last;
 
+	if (!*stack || dll_size(*stack) == 1)
+		return ;
 	head = *stack;
 	last = dll_last(head);
 	bef_last = last->prev;

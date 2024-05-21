@@ -6,7 +6,7 @@
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:50:39 by chsassi           #+#    #+#             */
-/*   Updated: 2024/03/30 15:50:41 by chsassi          ###   ########.fr       */
+/*   Updated: 2024/04/30 18:09:06 by mgalmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include "checker.h"
 # include <limits.h>
 
 typedef enum e_moves

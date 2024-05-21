@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgalmari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 20:46:10 by mgalmari          #+#    #+#             */
-/*   Updated: 2024/05/09 11:56:43 by mgalmari         ###   ########.fr       */
+/*   Created: 2024/04/30 18:14:12 by mgalmari          #+#    #+#             */
+/*   Updated: 2024/05/09 11:56:21 by mgalmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	pa(t_dll **stack_a, t_dll **stack_b)
+void	checker_pa(t_dll **stack_a, t_dll **stack_b)
 {
 	t_dll	*b_tmp;
 
@@ -22,7 +22,6 @@ void	pa(t_dll **stack_a, t_dll **stack_b)
 	{
 		dll_add_front(stack_a, *stack_b);
 		*stack_b = NULL;
-		write(1, "pa\n", 3);
 		return ;
 	}
 	b_tmp = (*stack_b)->next;
@@ -30,10 +29,9 @@ void	pa(t_dll **stack_a, t_dll **stack_b)
 	b_tmp->prev = NULL;
 	*stack_b = b_tmp;
 	set_index(stack_b);
-	write(1, "pa\n", 3);
 }
 
-void	pb(t_dll **stack_b, t_dll **stack_a)
+void	checker_pb(t_dll **stack_b, t_dll **stack_a)
 {
 	t_dll	*a_tmp;
 
@@ -43,7 +41,6 @@ void	pb(t_dll **stack_b, t_dll **stack_a)
 	{
 		dll_add_front(stack_b, *stack_a);
 		*stack_a = NULL;
-		write(1, "pb\n", 3);
 		return ;
 	}
 	a_tmp = (*stack_a)->next;
@@ -51,5 +48,4 @@ void	pb(t_dll **stack_b, t_dll **stack_a)
 	a_tmp->prev = NULL;
 	*stack_a = a_tmp;
 	set_index(stack_a);
-	write(1, "pb\n", 3);
 }
