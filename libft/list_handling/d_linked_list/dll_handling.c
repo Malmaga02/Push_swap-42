@@ -3,9 +3,9 @@
 /*                                                        :::      ::::::::   */
 /*   dll_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mgalmari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 18:20:45 by chsassi           #+#    #+#             */
+/*   Created: 2024/04/22 18:20:45 by mgalmari          #+#    #+#             */
 /*   Updated: 2024/05/02 18:31:29 by mgalmari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -35,11 +35,9 @@ int	find_min_index(t_dll *pStack)
 
 int	find_min_value(t_dll *pStack)
 {
-	int		i;
 	int		min;
 	t_dll	*ptr;
 
-	i = 0;
 	min = INT_MAX;
 	ptr = pStack;
 	while (ptr)
@@ -74,11 +72,9 @@ int	find_max_index(t_dll *pStack)
 
 int	find_max_value(t_dll *pStack)
 {
-	int		i;
 	int		max;
 	t_dll	*ptr;
 
-	i = 0;
 	max = INT_MIN;
 	ptr = pStack;
 	while (ptr)
