@@ -14,3 +14,4 @@ and learn how to implement your code, improving its efficiency according with yo
 I wrote this code while attending at 42 Florence, an innovating programming school.
 The course is mainly in C, but you get to explore C++, HTML, JavaScript and a little bit of Python,
 thanks to the workshops and events that the school provides.
+Read more about 42 School in here: https://en.wikipedia.org/wiki/42_(school).
